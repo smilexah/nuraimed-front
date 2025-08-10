@@ -23,7 +23,7 @@ export const Header: FC = () => {
     }, []);
 
     return (
-        <header className="bg-gray-800 text-white p-4 w-full sticky top-0 z-[10000] gap-5">
+        <header className="bg-[#fff] py-4 w-full sticky top-0 z-[10000] gap-5">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="flex items-center gap-2">
                     <Link href="/" className="flex items-center">

@@ -2,7 +2,7 @@ import {FC} from "react";
 import {Banner} from "@/components/shared/banner/Banner";
 import {Link} from "@/i18n/navigation";
 
-const AboutUsPage: FC = () => {
+const SpecialistsPage: FC = () => {
     return (
         <>
             <Banner
@@ -17,13 +17,13 @@ const AboutUsPage: FC = () => {
                 }
             />
             <div className="min-h-screen flex flex-col items-center justify-center text-center p-6">
-                <h1 className="text-[96px] font-bold text-[#4147BF] dark:text-[#666CF4] mb-4">О клинике</h1>
+                <h1 className="text-[96px] font-bold text-[#4147BF] dark:text-[#666CF4] mb-4">Специалисты</h1>
                 <p className="text-base md:text-lg text-[#232323] dark:text-white mb-6">
-                    Здесь будет информация о нашей клинике, услугах и команде.
+                    Здесь будет информация о наших специалистах, их квалификации и опыте работы.
                 </p>
             </div>
         </>
     );
 }
 
-export default AboutUsPage;
+export default SpecialistsPage;

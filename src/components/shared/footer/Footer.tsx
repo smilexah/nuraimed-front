@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const Footer: FC = () => {
     return (
-        <footer className="bg-gray-800 text-white py-4">
+        <footer className="bg-[rgba(42,89,99,0.1)] py-[50px]">
             <div className="container mx-auto">
                 <div className="flex justify-between">
                     <div className="flex flex-col gap-2 items-start">
@@ -107,7 +107,7 @@ export const Footer: FC = () => {
                     </div>
                 </div>
                 <p className="text-sm">
-                    &copy; {new Date().getFullYear()} Your Company Name. All rights reserved.
+                    &copy; {new Date().getFullYear()} Nuraimed. Все права защищены.
                 </p>
             </div>
         </footer>
