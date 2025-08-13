@@ -2,19 +2,20 @@
 
 import {FC, ReactNode} from "react";
 import Image from "next/image";
+import {Link} from "@/i18n/navigation";
 
 interface BannerProps {
     title: string;
-    breadcrumb?: ReactNode;
+    breadcrumbItems?: string[];
     backgroundImage?: string;
     overlayColor?: string;
 }
 
 export const Banner: FC<BannerProps> = ({
                                             title,
-                                            breadcrumb,
+                                            breadcrumbItems,
                                             backgroundImage,
-                                            overlayColor = "rgba(42, 89, 99, 0.6)",
+                                            overlayColor = "rgba(1, 168, 91, 0.6)",
                                         }) => {
     return (
         <div className="relative w-full h-[200px] flex items-center">
@@ -36,9 +37,15 @@ export const Banner: FC<BannerProps> = ({
 
                 <div className="relative z-10 text-white">
                     <h1 className="text-3xl font-bold uppercase">{title}</h1>
-                    {breadcrumb && (
-                        <div className="mt-2 text-sm opacity-80">{breadcrumb}</div>
-                    )}
+                    <div className="mt-3 text-base md:text-lg opacity-90">
+                        <Link href="/">Главная</Link>
+                        {breadcrumbItems && breadcrumbItems.map((item, index) => (
+                            <span key={index}>
+                                <span className="mx-1">•</span>
+                                <span>{item}</span>
+                            </span>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

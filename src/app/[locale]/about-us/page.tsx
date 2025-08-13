@@ -1,20 +1,13 @@
 import {FC} from "react";
 import {Banner} from "@/components/shared/banner/Banner";
-import {Link} from "@/i18n/navigation";
 
 const AboutUsPage: FC = () => {
     return (
         <>
             <Banner
-                title="СПЕЦИАЛИСТЫ"
+                title="О КЛИНИКЕ"
                 backgroundImage="/specialists-banner.jpg"
-                overlayColor="rgba(1, 168, 91, 0.6)"
-                breadcrumb={
-                    <>
-                        <Link href="/">Главная</Link> <span className="mx-1">•</span>{" "}
-                        <span className="font-semibold">Специалисты</span>
-                    </>
-                }
+                breadcrumbItems={["О клинике"]}
             />
             <div className="min-h-screen flex flex-col items-center justify-center text-center p-6">
                 <h1 className="text-[96px] font-bold text-[#4147BF] dark:text-[#666CF4] mb-4">О клинике</h1>
