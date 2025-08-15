@@ -1,14 +1,39 @@
-import {FC} from "react";
+"use client";
 
-const SpecialistsPageId: FC = () => {
-    return (
-        <div className="min-h-screen flex flex-col items-center justify-center text-center p-6">
-            <h1 className="text-[96px] font-bold text-[#4147BF] dark:text-[#666CF4] mb-4">Специалист</h1>
-            <p className="text-base md:text-lg text-[#232323] dark:text-white mb-6">
-                Здесь будет информация о конкретном специалисте, его квалификации и опыте работы.
-            </p>
-        </div>
-    );
+import { useEffect, useState } from "react";
+import {SpecialistView} from "@/components/SpecialistView";
+import axiosInstance from "@/api/axiosInstance";
+import {useParams} from "next/navigation";
+
+interface SpecialistTranslation {
+    languageCode: string;
+    description: string;
+    education: string;
+    experience: string;
+    serviceRecord: string;
+    specialization: string;
 }
 
-export default SpecialistsPageId;
+interface Specialist {
+    id: number;
+    firstName: string;
+    lastName: string;
+    middleName: string;
+    profileImage: string; // base64
+    translations: SpecialistTranslation[];
+}
+
+export default function SpecialistPageClient() {
+    const {id} = useParams();
+    const [specialist, setSpecialist] = useState<Specialist | null>(null);
+
+    useEffect(() => {
+        axiosInstance.get(`/doctors/${id}`).then(({ data }) => {
+            setSpecialist(data);
+        });
+    }, [id]);
+
+    if (!specialist) return <div>Loading...</div>;
+
+    return <SpecialistView specialist={specialist} />;
+}

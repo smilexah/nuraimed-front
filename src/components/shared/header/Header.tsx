@@ -4,10 +4,19 @@ import {FC, useState, useRef, useEffect} from "react";
 import Image from "next/image";
 import {LangSelector} from "@/components/shared/header/LangSelector";
 import {Link} from "@/i18n/navigation";
+import axiosInstance from "@/api/axiosInstance";
+import {useLocale} from "next-intl";
+
+type DirectionNamesResponse = {
+    id: number;
+    title: string;
+}
 
 export const Header: FC = () => {
+    const locale: string = useLocale();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLLIElement>(null);
+    const [directions, setDirections] = useState<DirectionNamesResponse[]>([]);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -21,6 +30,26 @@ export const Header: FC = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+
+    const fetchDirections = async () => {
+        try {
+            const response = await axiosInstance.get<DirectionNamesResponse[]>('/directions/navbar?languageCode=' + locale);
+            return response.data;
+        } catch (error) {
+            console.error('Error fetching directions:', error);
+            return [];
+        }
+    }
+
+    useEffect(() => {
+        const loadDirections = async () => {
+            const data = await fetchDirections();
+            setDirections(data);
+        };
+
+        loadDirections();
+    }, []);
+
 
     return (
         <header className="bg-[#fff] py-4 w-full sticky top-0 z-[10000] gap-5">
@@ -52,20 +81,15 @@ export const Header: FC = () => {
                                         className="absolute top-full left-0 bg-gray-700 min-w-[200px] rounded shadow-lg z-20 py-2"
                                         onMouseLeave={() => setIsDropdownOpen(false)}
                                     >
-                                        <Link href="/department/cardiology"
-                                              className="block px-4 py-2 hover:bg-gray-600">
-                                            Кардиология
-                                        </Link>
-                                        <Link href="/department/neurology"
-                                              className="block px-4 py-2 hover:bg-gray-600">
-                                            Неврология
-                                        </Link>
-                                        <Link href="/department/surgery" className="block px-4 py-2 hover:bg-gray-600">
-                                            Хирургия
-                                        </Link>
-                                        <Link href="/department/therapy" className="block px-4 py-2 hover:bg-gray-600">
-                                            Терапия
-                                        </Link>
+                                        {directions.map(direction => (
+                                            <Link
+                                                key={direction.id}
+                                                href={`/department/${direction.id}`}
+                                                className="block px-4 py-2 hover:bg-gray-600"
+                                            >
+                                                {direction.title}
+                                            </Link>
+                                        ))}
                                         <Link href="/department"
                                               className="block px-4 py-2 hover:bg-gray-600 border-t border-gray-600 mt-1 pt-2">
                                             Все отделения
