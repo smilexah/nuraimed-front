@@ -88,7 +88,7 @@ const ReviewsPage: FC = () => {
             setLoading(true);
             setError(null);
 
-            const res = await axiosInstance.post<Review>("/reviews", {
+            await axiosInstance.post<Review>("/reviews", {
                 name: form.name.trim(),
                 phone: form.phone.trim(),
                 message: form.message.trim()

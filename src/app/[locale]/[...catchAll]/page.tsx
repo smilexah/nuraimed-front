@@ -3,8 +3,6 @@ import {NextIntlClientProvider} from 'next-intl';
 import {routing} from '@/i18n/routing';
 import {notFound} from 'next/navigation';
 import {NotFound} from "@/components/shared/notFound";
-import {Header} from "@/components/shared/header";
-import {Footer} from "@/components/shared/footer";
 
 type Props = {
     params: Promise<{ locale: string; catchAll: string[] }>;

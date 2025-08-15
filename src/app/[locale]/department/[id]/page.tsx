@@ -3,6 +3,7 @@
 import { FC, useState, useEffect, use } from "react";
 import axiosInstance from "@/api/axiosInstance";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 interface Translation {
     languageCode: string;
@@ -69,7 +70,6 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
             <div className="container mx-auto px-4 py-12">
                 <div className="max-w-4xl mx-auto">
-                    {/* Header Section */}
                     <div className="text-center mb-12">
                         <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
                             Медицинское отделение
@@ -80,21 +80,20 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
                         <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full"></div>
                     </div>
 
-                    {/* Content Section */}
                     <div className="grid lg:grid-cols-2 gap-12 items-start">
-                        {/* Image */}
                         {department.directionImage && (
                             <div className="relative group">
                                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-300"></div>
-                                <img
+                                <Image
                                     src={`data:image/jpeg;base64,${department.directionImage}`}
                                     alt={currentTranslation.title}
+                                    width={600}
+                                    height={400}
                                     className="relative w-full rounded-xl shadow-2xl object-cover aspect-square lg:aspect-[4/3]"
                                 />
                             </div>
                         )}
 
-                        {/* Text Content */}
                         <div className="space-y-8">
                             <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
                                 <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
@@ -122,7 +121,6 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
                         </div>
                     </div>
 
-                    {/* Contact Section */}
                     <div className="mt-16 bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
                         <div className="text-center">
                             <h3 className="text-2xl font-bold text-gray-900 mb-4">

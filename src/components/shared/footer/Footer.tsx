@@ -1,114 +1,219 @@
-import {FC} from "react";
+"use client";
+
+import {FC, useEffect} from "react";
 import Image from "next/image";
+import {Link} from "@/i18n/navigation";
+import {useLocale} from "next-intl";
+import {useDirectionsStore} from "@/store/directionsStore";
 
 export const Footer: FC = () => {
+    const locale = useLocale();
+    const { directions, loading, fetchDirections } = useDirectionsStore();
+
+    useEffect(() => {
+        fetchDirections(locale);
+    }, [locale, fetchDirections]);
+
     return (
-        <footer className="bg-[rgba(42,89,99,0.1)] py-[50px]">
-            <div className="container mx-auto">
-                <div className="flex justify-between">
-                    <div className="flex flex-col gap-2 items-start">
-                        <Image
-                            src="/logo.png"
-                            alt="Logo"
-                            width={200}
-                            height={50}
-                        />
-                        <div className="flex gap-2 justify-center items-center">
+        <footer className="bg-[rgba(42,89,99,0.1)] py-8 md:py-12 lg:py-16">
+            <div className="container mx-auto px-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                    <div className="flex flex-col gap-4 items-start lg:col-span-1">
+                        <Link href="/" className="inline-block">
+                            <Image
+                                src="/logo.png"
+                                alt="NuraiMed Logo"
+                                width={200}
+                                height={50}
+                                className="h-10 w-auto sm:h-12"
+                            />
+                        </Link>
+                        <div className="flex gap-3 items-start">
                             <Image
                                 src="/footer-location-point.svg"
                                 alt="Location"
                                 width={16}
                                 height={16}
+                                className="mt-1 flex-shrink-0"
                             />
-                            <p className="text-sm">1234 Street Name, City, State, 12345</p>
+                            <p className="text-sm text-gray-700 leading-relaxed">
+                                г. Алматы, ул. Абая, 123<br />
+                                БЦ &quot;Медицинский&quot;, 2 этаж
+                            </p>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-2 items-start">
-                        <p>Отделение</p>
-                        <p>Офтальмология</p>
-                        <p>Педиатрия</p>
-                        <p>Гинекология</p>
-                        <p>Урология</p>
-                        <p>Анализы</p>
-                        <p>Процедурный кабинет</p>
-                        <p>Рентгенография</p>
-                        <p>Магнитно-резонансная томография МРТ</p>
-                        <p>Компьютерная Томография КТ</p>
-                        <p>Отоларингология</p>
-                        <p>Невропатология</p>
+
+                    <div className="flex flex-col gap-4 items-start lg:col-span-1">
+                        <h3 className="font-semibold text-lg text-[#2A5963] mb-2">Отделения</h3>
+                        {loading ? (
+                            <div className="space-y-2">
+                                {[...Array(6)].map((_, index) => (
+                                    <div key={index} className="h-4 bg-gray-200 rounded animate-pulse w-32"></div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="space-y-2">
+                                {directions.slice(0, 8).map(direction => (
+                                    <Link
+                                        key={direction.id}
+                                        href={`/department/${direction.id}`}
+                                        className="block text-sm text-gray-700 hover:text-[#F59E2D] transition-colors duration-200"
+                                    >
+                                        {direction.title}
+                                    </Link>
+                                ))}
+                                {directions.length > 8 && (
+                                    <Link
+                                        href="/department"
+                                        className="block text-sm text-[#F59E2D] font-medium hover:text-[#2A5963] transition-colors duration-200 pt-2"
+                                    >
+                                        Все отделения →
+                                    </Link>
+                                )}
+                            </div>
+                        )}
                     </div>
-                    <div className="flex flex-col gap-2 items-start">
-                        <p>Клиентам</p>
-                        <p>Корпоративным клиентам</p>
+
+                    <div className="flex flex-col gap-4 items-start lg:col-span-1">
+                        <h3 className="font-semibold text-lg text-[#2A5963] mb-2">Пациентам</h3>
+                        <div className="space-y-2">
+                            <Link
+                                href="/about-us"
+                                className="block text-sm text-gray-700 hover:text-[#F59E2D] transition-colors duration-200"
+                            >
+                                О клинике
+                            </Link>
+                            <Link
+                                href="/specialists"
+                                className="block text-sm text-gray-700 hover:text-[#F59E2D] transition-colors duration-200"
+                            >
+                                Наши врачи
+                            </Link>
+                            <Link
+                                href="/reviews"
+                                className="block text-sm text-gray-700 hover:text-[#F59E2D] transition-colors duration-200"
+                            >
+                                Отзывы пациентов
+                            </Link>
+                            <Link
+                                href="/contact"
+                                className="block text-sm text-gray-700 hover:text-[#F59E2D] transition-colors duration-200"
+                            >
+                                Записаться на прием
+                            </Link>
+                        </div>
                     </div>
-                    <div className="flex flex-col gap-2 items-start">
-                        <div className="flex gap-[10px] items-center">
+
+                    <div className="flex flex-col gap-4 items-start lg:col-span-1">
+                        <h3 className="font-semibold text-lg text-[#2A5963] mb-2">Контакты</h3>
+
+                        <div className="flex gap-3 items-start">
                             <Image
                                 src="/footer-phone.svg"
-                                alt="Logo"
-                                width={24}
-                                height={24}
+                                alt="Phone"
+                                width={20}
+                                height={20}
+                                className="mt-1 flex-shrink-0"
                             />
                             <div className="flex flex-col">
-                                <p>Отвечаем 24/7 без выходных</p>
-                                <a href="tel:+7 (708) 911-37-90">+7 (708) 911-37-90</a>
+                                <p className="text-xs text-gray-600 mb-1">Круглосуточно</p>
+                                <a
+                                    href="tel:+77472068196"
+                                    className="text-sm font-semibold text-[#2A5963] hover:text-[#F59E2D] transition-colors duration-200"
+                                >
+                                    +7 (747) 206-81-96
+                                </a>
                             </div>
                         </div>
-                        <div className="flex gap-[10px] items-center">
+
+                        <div className="flex gap-3 items-start">
                             <Image
                                 src="/footer-phone.svg"
-                                alt="Logo"
-                                width={24}
-                                height={24}
+                                alt="Phone"
+                                width={20}
+                                height={20}
+                                className="mt-1 flex-shrink-0"
                             />
                             <div className="flex flex-col">
-                                <p>Телефон жалоб и предложений</p>
-                                <a href="tel:+7 (708) 911-37-90">+7 (708) 911-37-90</a>
+                                <p className="text-xs text-gray-600 mb-1">Жалобы и предложения</p>
+                                <a
+                                    href="tel:+77472068196"
+                                    className="text-sm font-semibold text-[#2A5963] hover:text-[#F59E2D] transition-colors duration-200"
+                                >
+                                    +7 (747) 206-81-96
+                                </a>
                             </div>
                         </div>
-                        <div className="flex gap-[10px] items-center">
-                            <Image
-                                src="/footer-phone.svg"
-                                alt="Logo"
-                                width={24}
-                                height={24}
-                            />
-                            <div className="flex flex-col">
-                                <p>По вопросам вакансий</p>
-                                <a href="tel:+7 (708) 911-37-90">+7 (708) 911-37-90</a>
+
+                        <div className="mt-4">
+                            <p className="text-sm text-gray-600 mb-3">Мы в социальных сетях:</p>
+                            <div className="flex gap-3">
+                                <a
+                                    href="https://wa.me/77472068196"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:scale-110 transition-transform duration-200"
+                                >
+                                    <Image
+                                        src="/whatsapp-icon.svg"
+                                        alt="WhatsApp"
+                                        width={32}
+                                        height={32}
+                                    />
+                                </a>
+                                <a
+                                    href="https://instagram.com/nurai.med"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:scale-110 transition-transform duration-200"
+                                >
+                                    <Image
+                                        src="/instagram-icon.svg"
+                                        alt="Instagram"
+                                        width={32}
+                                        height={32}
+                                    />
+                                </a>
+                                {/*<a*/}
+                                {/*    href="https://facebook.com/nuray.med"*/}
+                                {/*    target="_blank"*/}
+                                {/*    rel="noopener noreferrer"*/}
+                                {/*    className="hover:scale-110 transition-transform duration-200"*/}
+                                {/*>*/}
+                                {/*    <Image*/}
+                                {/*        src="/facebook-icon.svg"*/}
+                                {/*        alt="Facebook"*/}
+                                {/*        width={32}*/}
+                                {/*        height={32}*/}
+                                {/*    />*/}
+                                {/*</a>*/}
                             </div>
-                        </div>
-                        <div className="flex gap-2">
-                            <a href="#" className="text-white hover:text-gray-400">
-                                <Image
-                                    src="/whatsapp-icon.svg"
-                                    alt="Whatsapp"
-                                    width={30}
-                                    height={30}
-                                />
-                            </a>
-                            <a href="#" className="text-white hover:text-gray-400">
-                                <Image
-                                    src="/instagram-icon.svg"
-                                    alt="Instagram"
-                                    width={30}
-                                    height={30}
-                                />
-                            </a>
-                            <a href="#" className="text-white hover:text-gray-400">
-                                <Image
-                                    src="/facebook-icon.svg"
-                                    alt="Facebook"
-                                    width={30}
-                                    height={30}
-                                />
-                            </a>
                         </div>
                     </div>
                 </div>
-                <p className="text-sm">
-                    &copy; {new Date().getFullYear()} Nuraimed. Все права защищены.
-                </p>
+
+                {/* Разделительная линия и копирайт */}
+                <div className="border-t border-gray-300 mt-8 pt-6">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-sm text-gray-600 text-center md:text-left">
+                            © 2024 NuraiMed. Все права защищены.
+                        </p>
+                        <div className="flex flex-wrap justify-center md:justify-end gap-4 text-sm">
+                            <Link
+                                href="/privacy"
+                                className="text-gray-600 hover:text-[#F59E2D] transition-colors duration-200"
+                            >
+                                Политика конфиденциальности
+                            </Link>
+                            <Link
+                                href="/terms"
+                                className="text-gray-600 hover:text-[#F59E2D] transition-colors duration-200"
+                            >
+                                Условия использования
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </div>
         </footer>
     );
