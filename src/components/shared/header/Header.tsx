@@ -13,10 +13,11 @@ export const Header: FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const dropdownRef = useRef<HTMLLIElement>(null);
     const mobileMenuRef = useRef<HTMLDivElement>(null);
+    const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
     const {directions, fetchDirections} = useDirectionsStore();
 
     useEffect(() => {
-        fetchDirections(locale);
+        void fetchDirections(locale);
     }, [locale, fetchDirections]);
 
     useEffect(() => {
@@ -24,7 +25,14 @@ export const Header: FC = () => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 setIsDropdownOpen(false);
             }
-            if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+
+            // Проверяем, что клик не по кнопке мобильного меню И не внутри самого меню
+            if (
+                mobileMenuRef.current &&
+                !mobileMenuRef.current.contains(event.target as Node) &&
+                mobileMenuButtonRef.current &&
+                !mobileMenuButtonRef.current.contains(event.target as Node)
+            ) {
                 setIsMobileMenuOpen(false);
             }
         }
@@ -150,16 +158,26 @@ export const Header: FC = () => {
                     </div>
 
                     <button
+                        ref={mobileMenuButtonRef}
                         className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         aria-label="Toggle mobile menu"
                     >
                         <span
-                            className={`w-6 h-0.5 bg-[#2A5963] transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                            className={`w-6 h-0.5 bg-[#2A5963] transition-all duration-300 origin-center ${
+                                isMobileMenuOpen ? 'rotate-45 translate-y-1' : ''
+                            }`}
+                        ></span>
                         <span
-                            className={`w-6 h-0.5 bg-[#2A5963] transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+                            className={`w-6 h-0.5 bg-[#2A5963] transition-all duration-300 ${
+                                isMobileMenuOpen ? 'opacity-0' : ''
+                            }`}
+                        ></span>
                         <span
-                            className={`w-6 h-0.5 bg-[#2A5963] transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                            className={`w-6 h-0.5 bg-[#2A5963] transition-all duration-300 origin-center ${
+                                isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                            }`}
+                        ></span>
                     </button>
                 </div>
 
