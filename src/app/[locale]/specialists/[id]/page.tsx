@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {SpecialistView} from "@/components/SpecialistView";
+import { SpecialistView } from "@/components/SpecialistView";
 import axiosInstance from "@/api/axiosInstance";
-import {useParams} from "next/navigation";
+import { useParams } from "next/navigation";
+import {Link} from "@/i18n/navigation";
 
 interface SpecialistTranslation {
     languageCode: string;
@@ -24,16 +25,67 @@ interface Specialist {
 }
 
 export default function SpecialistPageClient() {
-    const {id} = useParams();
+    const { id } = useParams();
     const [specialist, setSpecialist] = useState<Specialist | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        axiosInstance.get(`/doctors/${id}`).then(({ data }) => {
-            setSpecialist(data);
-        });
+        setLoading(true);
+        axiosInstance.get(`/doctors/${id}`)
+            .then(({ data }) => {
+                setSpecialist(data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.error('Ошибка при загрузке данных специалиста:', err);
+                setError('Произошла ошибка при загрузке данных. Пожалуйста, попробуйте позже.');
+                setLoading(false);
+            });
     }, [id]);
 
-    if (!specialist) return <div>Loading...</div>;
+    if (loading) {
+        return (
+            <div className="min-h-[50vh] flex items-center justify-center">
+                <div className="animate-pulse flex flex-col items-center">
+                    <div className="w-16 h-16 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
+                    <p className="mt-4 text-gray-600">Загрузка...</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="min-h-[50vh] flex items-center justify-center">
+                <div className="text-center p-6 bg-red-50 rounded-lg max-w-md">
+                    <p className="text-red-600 text-lg mb-2">⚠️ {error}</p>
+                    <button
+                        onClick={() => window.location.reload()}
+                        className="mt-4 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition"
+                    >
+                        Повторить попытку
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
+    if (!specialist) {
+        return (
+            <div className="min-h-[50vh] flex items-center justify-center">
+                <div className="text-center p-6 bg-yellow-50 rounded-lg max-w-md">
+                    <p className="text-amber-600 text-lg">Специалист не найден</p>
+                    <Link
+                        href="/specialists"
+                        className="mt-4 inline-block px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition"
+                    >
+                        Вернуться к списку специалистов
+                    </Link>
+                </div>
+            </div>
+        );
+    }
 
     return <SpecialistView specialist={specialist} />;
 }
