@@ -90,7 +90,7 @@ export default function ReviewsCarousel() {
                 <button
                     aria-label="Назад"
                     onClick={() => scrollBy(-420)}
-                    className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 h-11 w-11 items-center justify-center rounded-full bg-white shadow hover:bg-slate-50"
+                    className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 h-12 w-12 items-center justify-center rounded-full bg-[#2A5963] text-white shadow-lg hover:bg-[#2A5963]/90 hover:shadow-xl transition-all duration-300 text-xl font-bold"
                 >
                     ‹
                 </button>
@@ -99,13 +99,13 @@ export default function ReviewsCarousel() {
                 <button
                     aria-label="Вперёд"
                     onClick={() => scrollBy(420)}
-                    className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 h-11 w-11 items-center justify-center rounded-full bg-white shadow hover:bg-slate-50"
+                    className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 h-12 w-12 items-center justify-center rounded-full bg-[#2A5963] text-white shadow-lg hover:bg-[#2A5963]/90 hover:shadow-xl transition-all duration-300 text-xl font-bold"
                 >
                     ›
                 </button>
             )}
-            {canLeft && <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-white to-transparent" />}
-            {canRight && <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-white to-transparent" />}
+            {canLeft && <div className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-gray-50 to-transparent z-[5]" />}
+            {canRight && <div className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-gray-50 to-transparent z-[5]" />}
 
             <div
                 ref={ref}
@@ -114,7 +114,7 @@ export default function ReviewsCarousel() {
                 {reviews.map((r) => (
                     <article
                         key={r.id}
-                        className="snap-start shrink-0 w-[340px] md:w-[380px] rounded-2xl bg-emerald-50 p-6 text-[#03224b] shadow-sm"
+                        className="snap-start shrink-0 w-[340px] md:w-[380px] rounded-2xl bg-white border border-gray-100 p-6 text-[#2A5963] shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                         <h4 className="text-2xl font-bold">{r.name || "Аноним"}</h4>
                         <p className="text-slate-400 mt-1">

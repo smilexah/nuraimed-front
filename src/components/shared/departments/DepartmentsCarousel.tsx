@@ -134,7 +134,7 @@ export default function DepartmentsCarousel() {
                     <button
                         aria-label="Назад"
                         onClick={() => scrollBy(-400)}
-                        className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-white shadow hover:bg-slate-50"
+                        className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 h-12 w-12 items-center justify-center rounded-full bg-[#2A5963] text-white shadow-lg hover:bg-[#2A5963]/90 hover:shadow-xl transition-all duration-300 text-xl font-bold"
                     >
                         ‹
                     </button>
@@ -145,15 +145,17 @@ export default function DepartmentsCarousel() {
                     <button
                         aria-label="Вперёд"
                         onClick={() => scrollBy(400)}
-                        className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-white shadow hover:bg-slate-50"
+                        className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 h-12 w-12 items-center justify-center rounded-full bg-[#2A5963] text-white shadow-lg hover:bg-[#2A5963]/90 hover:shadow-xl transition-all duration-300 text-xl font-bold"
                     >
                         ›
                     </button>
                 )}
 
                 {/* градиенты по краям при наличии скролла */}
-                {canLeft && <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-white to-transparent" />}
-                {canRight && <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-white to-transparent" />}
+                {canLeft && <div
+                    className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-gray-50 to-transparent z-[5]"/>}
+                {canRight && <div
+                    className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-gray-50 to-transparent z-[5]"/>}
 
                 {/* лента */}
                 <div
@@ -164,7 +166,7 @@ export default function DepartmentsCarousel() {
                         <Link
                             key={d.id ?? idx}
                             href={d.href}
-                            className="relative snap-start shrink-0 w-[320px] md:w-[360px] h-[420px] rounded-2xl overflow-hidden shadow hover:shadow-lg transition"
+                            className="relative snap-start shrink-0 w-[320px] md:w-[360px] h-[420px] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
                         >
                             <Image
                                 src={d.img}
@@ -174,7 +176,7 @@ export default function DepartmentsCarousel() {
                                 className="object-cover"
                                 priority={idx < 3}
                             />
-                            <div className="absolute inset-0 bg-black/25" />
+                            <div className="absolute inset-0 bg-black/25"/>
                             <div className="absolute left-4 right-4 top-4">
                                 <p className="text-white font-extrabold text-xl leading-tight drop-shadow">
                                     {d.title}
