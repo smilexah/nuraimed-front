@@ -26,7 +26,7 @@ const AboutUsPage: FC = () => {
                                 О нашей клинике
                             </div>
                             <h1 className="text-3xl lg:text-4xl font-bold text-[#2A5963] mb-6 leading-tight">
-                                Добро пожаловать в NuraiMed
+                                Добро пожаловать в DI-CLINIC
                             </h1>
                             <p className="text-gray-600 text-lg max-w-3xl mx-auto">
                                 Современный медицинский центр с высококачественными услугами и индивидуальным подходом к каждому пациенту
@@ -42,7 +42,7 @@ const AboutUsPage: FC = () => {
                                             Наша история и миссия
                                         </h2>
                                         <p className="text-gray-600 mb-4 leading-relaxed">
-                                            NuraiMed — это современный медицинский центр, который предоставляет
+                                            DI-CLINIC — это современный медицинский центр, который предоставляет
                                             высококачественные медицинские услуги с использованием передовых
                                             технологий и индивидуального подхода к каждому пациенту.
                                         </p>
@@ -55,7 +55,7 @@ const AboutUsPage: FC = () => {
                                     <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
                                         <Image
                                             src="/nuraimed.jpg"
-                                            alt="NuraiMed клиника"
+                                            alt="DI-CLINIC клиника"
                                             fill
                                             className="object-cover"
                                         />
@@ -119,7 +119,7 @@ const AboutUsPage: FC = () => {
                         <section className="mb-16">
                             <div className="text-center mb-12">
                                 <h2 className="text-2xl lg:text-3xl font-bold text-[#2A5963] mb-4">
-                                    Почему выбирают NuraiMed
+                                    Почему выбирают DI-CLINIC
                                 </h2>
                                 <p className="text-gray-600 max-w-2xl mx-auto">
                                     Наши преимущества делают нас лидером в области медицинских услуг
@@ -178,7 +178,7 @@ const AboutUsPage: FC = () => {
                             <div className="bg-gradient-to-r from-[#2A5963] to-[#3B6B75] rounded-2xl p-8 lg:p-12 text-white">
                                 <div className="text-center mb-12">
                                     <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-                                        NuraiMed в цифрах
+                                        DI-CLINIC в цифрах
                                     </h2>
                                     <p className="text-white/80 max-w-2xl mx-auto">
                                         Наши достижения говорят сами за себя

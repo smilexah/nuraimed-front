@@ -19,14 +19,17 @@ export const Footer: FC = () => {
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
                     <div className="flex flex-col gap-4 items-start lg:col-span-1">
-                        <Link href="/" className="inline-block">
+                        <Link href="/" className="flex items-center">
                             <Image
                                 src="/logo.png"
-                                alt="NuraiMed Logo"
-                                width={200}
+                                alt="DI-CLINIC Logo"
+                                width={100}
                                 height={50}
                                 className="h-10 w-auto sm:h-12"
                             />
+                            <span className="ml-2 text-[#F59E2D] font-bold text-lg sm:text-xl">
+                                DI-CLINIC
+                            </span>
                         </Link>
                         <div className="flex gap-3 items-start">
                             <Image
@@ -162,7 +165,7 @@ export const Footer: FC = () => {
                                     />
                                 </a>
                                 <a
-                                    href="https://instagram.com/nurai.med"
+                                    href="https://instagram.com/di_clinic.kz"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:scale-110 transition-transform duration-200"
@@ -196,22 +199,8 @@ export const Footer: FC = () => {
                 <div className="border-t border-gray-300 mt-8 pt-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-sm text-gray-600 text-center md:text-left">
-                            © 2024 NuraiMed. Все права защищены.
+                            © 2025 DI-CLINIC. Все права защищены.
                         </p>
-                        <div className="flex flex-wrap justify-center md:justify-end gap-4 text-sm">
-                            <Link
-                                href="/privacy"
-                                className="text-gray-600 hover:text-[#F59E2D] transition-colors duration-200"
-                            >
-                                Политика конфиденциальности
-                            </Link>
-                            <Link
-                                href="/terms"
-                                className="text-gray-600 hover:text-[#F59E2D] transition-colors duration-200"
-                            >
-                                Условия использования
-                            </Link>
-                        </div>
                     </div>
                 </div>
             </div>

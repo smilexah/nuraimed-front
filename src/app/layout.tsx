@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Nuraimed",
-    description: "Nuraimed - медицинская клиника Алматы",
+    title: "DI-CLINIC",
+    description: "DI-CLINIC - медицинская клиника Алматы",
     icons: '/favicon.ico',
 };
 

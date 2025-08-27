@@ -14,7 +14,7 @@ const HomePage: FC = () => {
                 <div className="absolute inset-0 bg-black opacity-40"></div>
                 <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
                     <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                        Добро пожаловать в NuraiMed
+                        Добро пожаловать в DI-CLINIC
                     </h1>
                     <p className="text-xl md:text-2xl mb-8 leading-relaxed opacity-90">
                         Современный медицинский центр с индивидуальным подходом к каждому пациенту
@@ -48,7 +48,7 @@ const HomePage: FC = () => {
                                 Наши преимущества
                             </div>
                             <h2 className="text-3xl lg:text-4xl font-bold text-[#2A5963] mb-6 leading-tight">
-                                Почему выбирают NuraiMed
+                                Почему выбирают DI-CLINIC
                             </h2>
                             <p className="text-gray-600 text-lg max-w-3xl mx-auto">
                                 Мы предоставляем высококачественные медицинские услуги с использованием современных технологий
@@ -126,10 +126,10 @@ const HomePage: FC = () => {
                                         О нашей клинике
                                     </div>
                                     <h2 className="text-2xl lg:text-3xl font-bold text-[#2A5963] mb-6">
-                                        О медицинском центре NuraiMed
+                                        О медицинском центре DI-CLINIC
                                     </h2>
                                     <p className="text-gray-600 mb-6 leading-relaxed">
-                                        NuraiMed — это современный медицинский центр, который предоставляет
+                                        DI-CLINIC — это современный медицинский центр, который предоставляет
                                         комплексные медицинские услуги на высоком профессиональном уровне.
                                         Мы используем передовые методы диагностики и лечения.
                                     </p>
@@ -202,7 +202,7 @@ const HomePage: FC = () => {
                     <div className="max-w-7xl mx-auto">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                                NuraiMed в цифрах
+                                DI-CLINIC в цифрах
                             </h2>
                             <p className="text-white/80 max-w-2xl mx-auto">
                                 Наши достижения говорят сами за себя

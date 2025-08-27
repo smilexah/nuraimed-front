@@ -134,7 +134,7 @@ const ContactPage: FC = () => {
                                             <div>
                                                 <h4 className="font-semibold text-[#2A5963] mb-1">Email</h4>
                                                 <a href="mailto:info@nuraimed.kz" className="text-gray-600 hover:text-[#F59E2D] transition-colors">
-                                                    info@nuraimed.kz
+                                                    info@di-clinic.kz
                                                 </a>
                                                 <p className="text-sm text-gray-500 mt-1">Ответим в течение часа</p>
                                             </div>
@@ -225,7 +225,7 @@ const ContactPage: FC = () => {
                                     <div className="absolute top-4 left-4 bg-white rounded-lg p-3 shadow-lg">
                                         <div className="flex items-center space-x-2">
                                             <div className="w-3 h-3 bg-[#F59E2D] rounded-full"></div>
-                                            <span className="text-sm font-semibold text-[#2A5963]">NuraiMed</span>
+                                            <span className="text-sm font-semibold text-[#2A5963]">DI-CLINIC</span>
                                         </div>
                                         <p className="text-xs text-gray-600 mt-1">ул. Абая 150/230</p>
                                     </div>

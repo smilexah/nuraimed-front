@@ -57,12 +57,15 @@ export const Header: FC = () => {
                         <Link href="/" className="flex items-center">
                             <Image
                                 src="/logo.png"
-                                alt="NuraiMed Logo"
+                                alt="DI-CLINIC Logo"
                                 width={100}
                                 height={50}
                                 className="h-8 w-auto sm:h-12"
                                 priority
                             />
+                            <span className="ml-2 text-[#F59E2D] font-bold text-lg sm:text-xl">
+                                DI-CLINIC
+                            </span>
                         </Link>
                     </div>
 
