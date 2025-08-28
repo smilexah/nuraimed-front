@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import axiosInstance from "@/api/axiosInstance";
 
 type ReviewDto = {
@@ -32,9 +32,9 @@ export default function ReviewsCarousel() {
         let mounted = true;
         (async () => {
             try {
-                const { data } = await axiosInstance.get<Page<ReviewDto>>(
+                const {data} = await axiosInstance.get<Page<ReviewDto>>(
                     "/reviews",
-                    { params: { page: 0, size: 20 } }
+                    {params: {page: 0, size: 20}}
                 );
                 if (mounted && data.content) {
                     setReviews(data.content);
@@ -43,7 +43,9 @@ export default function ReviewsCarousel() {
                 if (mounted) setLoading(false);
             }
         })();
-        return () => { mounted = false; };
+        return () => {
+            mounted = false;
+        };
     }, []);
 
     const update = () => {
@@ -56,7 +58,7 @@ export default function ReviewsCarousel() {
     useEffect(() => {
         update();
         const el = ref.current;
-        el?.addEventListener("scroll", update, { passive: true });
+        el?.addEventListener("scroll", update, {passive: true});
         window.addEventListener("resize", update);
         return () => {
             el?.removeEventListener("scroll", update);
@@ -64,13 +66,13 @@ export default function ReviewsCarousel() {
         };
     }, [reviews.length]);
 
-    const scrollBy = (dx: number) => ref.current?.scrollBy({ left: dx, behavior: "smooth" });
+    const scrollBy = (dx: number) => ref.current?.scrollBy({left: dx, behavior: "smooth"});
 
     if (loading) {
         return (
             <div className="flex gap-6 overflow-hidden pl-4 pr-4">
-                {Array.from({ length: 3 }).map((_, i) => (
-                    <div key={i} className="w-[340px] md:w-[380px] h-[200px] rounded-2xl bg-slate-100 animate-pulse" />
+                {Array.from({length: 3}).map((_, i) => (
+                    <div key={i} className="w-[340px] md:w-[380px] h-[200px] rounded-2xl bg-slate-100 animate-pulse"/>
                 ))}
             </div>
         );
@@ -78,7 +80,7 @@ export default function ReviewsCarousel() {
 
     if (!reviews.length) {
         return (
-            <div className="text-center text-slate-500 py-6">
+            <div className="rounded-xl border p-6 text-center text-slate-500">
                 Отзывов пока нет.
             </div>
         );
@@ -104,8 +106,10 @@ export default function ReviewsCarousel() {
                     ›
                 </button>
             )}
-            {canLeft && <div className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-gray-50 to-transparent z-[5]" />}
-            {canRight && <div className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-gray-50 to-transparent z-[5]" />}
+            {canLeft && <div
+                className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-gray-50 to-transparent z-[5]"/>}
+            {canRight && <div
+                className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-gray-50 to-transparent z-[5]"/>}
 
             <div
                 ref={ref}

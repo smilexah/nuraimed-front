@@ -35,14 +35,12 @@ const SpecialistsPage: FC = () => {
     const [loadingMore, setLoadingMore] = useState(false);
     const [page, setPage] = useState(0);
     const [lastPage, setLastPage] = useState(false);
-    const [error, setError] = useState<string | null>(null);
     const initialLoadRef = useRef(false);
 
     const pageSize = 8;
 
     const fetchSpecialists = async (pageNum: number, replace = false) => {
         try {
-            setError(null);
             if (pageNum === 0) {
                 setLoading(true);
             } else {
@@ -65,7 +63,6 @@ const SpecialistsPage: FC = () => {
             setPage(pageNum);
         } catch (err) {
             console.error("Ошибка загрузки специалистов", err);
-            setError("Ошибка при загрузке специалистов. Попробуйте еще раз.");
         } finally {
             setLoading(false);
             setLoadingMore(false);
@@ -96,7 +93,6 @@ const SpecialistsPage: FC = () => {
             <div className="bg-gray-50 py-12 lg:py-16">
                 <div className="container mx-auto px-4">
                     <div className="max-w-7xl mx-auto">
-                        {/* Header Section */}
                         <div className="text-center mb-12">
                             <div className="inline-flex items-center px-4 py-2 bg-[#F59E2D]/10 text-[#F59E2D] rounded-full text-sm font-medium mb-6">
                                 <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -112,19 +108,6 @@ const SpecialistsPage: FC = () => {
                             </p>
                         </div>
 
-                        {/* Error Message */}
-                        {error && (
-                            <div className="mb-8 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg max-w-4xl mx-auto">
-                                <div className="flex items-center">
-                                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                                    </svg>
-                                    {error}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Loading State */}
                         {loading && specialists.length === 0 && (
                             <div className="flex justify-center items-center py-16">
                                 <div className="flex flex-col items-center space-y-4">
@@ -134,7 +117,6 @@ const SpecialistsPage: FC = () => {
                             </div>
                         )}
 
-                        {/* Specialists Grid */}
                         {specialists.length > 0 && (
                             <div>
                                 <div className="flex items-center mb-8">
@@ -165,7 +147,6 @@ const SpecialistsPage: FC = () => {
                                                             fill
                                                             className="object-cover group-hover:scale-105 transition-transform duration-300"
                                                         />
-                                                        {/* Gradient Overlay */}
                                                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                                     </div>
                                                     <div className="p-6">
@@ -208,7 +189,6 @@ const SpecialistsPage: FC = () => {
                             </div>
                         )}
 
-                        {/* Empty State */}
                         {!loading && specialists.length === 0 && (
                             <div className="text-center py-16">
                                 <div className="w-24 h-24 bg-[#F59E2D]/10 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -221,7 +201,6 @@ const SpecialistsPage: FC = () => {
                             </div>
                         )}
 
-                        {/* Load More Button */}
                         {!lastPage && specialists.length > 0 && (
                             <div className="flex justify-center mt-12">
                                 <button

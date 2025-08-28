@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import {Metadata} from 'next';
 
 export interface SEOData {
     title: string | { default: string; template: string };
@@ -29,16 +29,12 @@ export function generateMetadata(seoData: SEOData, locale: string = 'ru'): Metad
         alternates: {
             canonical: seoData.canonical ? `${baseUrl}${seoData.canonical}` : undefined,
             languages: {
-                ru: seoData.canonical ? `${baseUrl}/ru${seoData.canonical}` : `${baseUrl}/ru`,
-                kk: seoData.canonical ? `${baseUrl}/kk${seoData.canonical}` : `${baseUrl}/kk`,
+                'ru': seoData.canonical ? `${baseUrl}/ru${seoData.canonical}` : `${baseUrl}/ru`,
+                'kk': seoData.canonical ? `${baseUrl}/kk${seoData.canonical}` : `${baseUrl}/kk`,
             },
         },
         openGraph: {
-            title:
-                seoData.openGraph?.title ||
-                (typeof seoData.title === 'string'
-                    ? seoData.title
-                    : seoData.title.default), // 👈 fallback для объектов
+            title: seoData.openGraph?.title || seoData.title,
             description: seoData.openGraph?.description || seoData.description,
             url: seoData.canonical ? `${baseUrl}${seoData.canonical}` : baseUrl,
             siteName: 'DI-CLINIC',
@@ -48,11 +44,9 @@ export function generateMetadata(seoData: SEOData, locale: string = 'ru'): Metad
                         url: seoData.openGraph.image,
                         width: 1200,
                         height: 630,
-                        alt:
-                            seoData.openGraph?.title ||
-                            (typeof seoData.title === 'string'
-                                ? seoData.title
-                                : seoData.title.default),
+                        alt: typeof seoData.title === 'string'
+                            ? seoData.title
+                            : seoData.title.default,
                     },
                 ]
                 : [
@@ -63,16 +57,12 @@ export function generateMetadata(seoData: SEOData, locale: string = 'ru'): Metad
                         alt: 'DI-CLINIC - Медицинская клиника в Алматы',
                     },
                 ],
-            locale,
+            locale: locale,
             type: seoData.openGraph?.type || 'website',
         },
         twitter: {
             card: seoData.twitter?.card || 'summary_large_image',
-            title:
-                seoData.twitter?.title ||
-                (typeof seoData.title === 'string'
-                    ? seoData.title
-                    : seoData.title.default),
+            title: seoData.twitter?.title || seoData.title,
             description: seoData.twitter?.description || seoData.description,
             images: seoData.twitter?.image
                 ? [seoData.twitter.image]
@@ -92,6 +82,19 @@ export function generateMetadata(seoData: SEOData, locale: string = 'ru'): Metad
         verification: {
             google: process.env.GOOGLE_SITE_VERIFICATION,
             yandex: process.env.YANDEX_VERIFICATION,
+        },
+        // Дополнительные метатеги для мобильной оптимизации
+        other: {
+            'mobile-web-app-capable': 'yes',
+            'apple-mobile-web-app-capable': 'yes',
+            'apple-mobile-web-app-status-bar-style': 'default',
+            'format-detection': 'telephone=yes',
+            'HandheldFriendly': 'true',
+            'MobileOptimized': '320',
+            'geo.region': 'KZ-75',
+            'geo.placename': 'Алматы',
+            'geo.position': '43.2567;76.9286',
+            'ICBM': '43.2567, 76.9286',
         },
     };
 }

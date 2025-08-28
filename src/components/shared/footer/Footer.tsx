@@ -152,7 +152,7 @@ export const Footer: FC = () => {
                             <p className="text-sm text-gray-600 mb-3">Мы в социальных сетях:</p>
                             <div className="flex gap-3">
                                 <a
-                                    href="https://wa.me/77472068196"
+                                    href="https://wa.me/77086073075?text=Здравствуйте!%20Пишу%20Вам%20с%20сайта.%20Хочу%20записаться%20на%20консультацию."
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:scale-110 transition-transform duration-200"
@@ -177,25 +177,24 @@ export const Footer: FC = () => {
                                         height={32}
                                     />
                                 </a>
-                                {/*<a*/}
-                                {/*    href="https://facebook.com/nuray.med"*/}
-                                {/*    target="_blank"*/}
-                                {/*    rel="noopener noreferrer"*/}
-                                {/*    className="hover:scale-110 transition-transform duration-200"*/}
-                                {/*>*/}
-                                {/*    <Image*/}
-                                {/*        src="/facebook-icon.svg"*/}
-                                {/*        alt="Facebook"*/}
-                                {/*        width={32}*/}
-                                {/*        height={32}*/}
-                                {/*    />*/}
-                                {/*</a>*/}
+                                <a
+                                    href="https://shorturl.at/rKvTS"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:scale-110 transition-transform duration-200"
+                                >
+                                    <Image
+                                        src="/facebook-icon.svg"
+                                        alt="Facebook"
+                                        width={32}
+                                        height={32}
+                                    />
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Разделительная линия и копирайт */}
                 <div className="border-t border-gray-300 mt-8 pt-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-sm text-gray-600 text-center md:text-left">

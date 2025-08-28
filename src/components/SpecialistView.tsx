@@ -48,7 +48,6 @@ export const SpecialistView: FC<{ specialist: Specialist }> = ({specialist}) => 
             />
 
             <div className="container mx-auto py-10 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8">
-                {/* Левая колонка */}
                 <section className="space-y-6">
                     <div>
                         <h2 className="text-2xl font-bold mb-3">О враче</h2>
@@ -71,7 +70,6 @@ export const SpecialistView: FC<{ specialist: Specialist }> = ({specialist}) => 
                     </div>
                 </section>
 
-                {/* Правая карточка как на скрине */}
                 <aside className="lg:sticky lg:top-6 h-fit rounded-xl border shadow-sm overflow-hidden">
                     <div className="p-5 text-center">
                         <Image

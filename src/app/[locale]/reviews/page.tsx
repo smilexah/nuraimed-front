@@ -55,7 +55,6 @@ const ReviewsPage: FC = () => {
             setPage(pageNum);
         } catch (err) {
             console.error("Ошибка загрузки отзывов", err);
-            setError("Ошибка при загрузке отзывов. Попробуйте еще раз.");
         } finally {
             setLoading(false);
             setLoadingMore(false);
@@ -120,7 +119,6 @@ const ReviewsPage: FC = () => {
             <div className="bg-gray-50 py-12 lg:py-16">
                 <div className="container mx-auto px-4">
                     <div className="max-w-7xl mx-auto">
-                        {/* Header Section */}
                         <div className="text-center mb-12">
                             <div className="inline-flex items-center px-4 py-2 bg-[#F59E2D]/10 text-[#F59E2D] rounded-full text-sm font-medium mb-6">
                                 <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -136,7 +134,6 @@ const ReviewsPage: FC = () => {
                             </p>
                         </div>
 
-                        {/* Error Message */}
                         {error && (
                             <div className="mb-8 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg max-w-4xl mx-auto">
                                 <div className="flex items-center">
@@ -148,7 +145,6 @@ const ReviewsPage: FC = () => {
                             </div>
                         )}
 
-                        {/* Review Form */}
                         <div className="max-w-4xl mx-auto mb-16">
                             <div className="bg-white rounded-2xl shadow-lg p-6 lg:p-8 border border-gray-100">
                                 <div className="flex items-center mb-6">
@@ -222,7 +218,6 @@ const ReviewsPage: FC = () => {
                             </div>
                         </div>
 
-                        {/* Loading State */}
                         {loading && reviews.length === 0 && (
                             <div className="flex justify-center items-center py-16">
                                 <div className="flex flex-col items-center space-y-4">
@@ -232,7 +227,6 @@ const ReviewsPage: FC = () => {
                             </div>
                         )}
 
-                        {/* Reviews Grid */}
                         {reviews.length > 0 && (
                             <div>
                                 <div className="flex items-center mb-8">
@@ -285,7 +279,6 @@ const ReviewsPage: FC = () => {
                             </div>
                         )}
 
-                        {/* Empty State */}
                         {!loading && reviews.length === 0 && (
                             <div className="text-center py-16">
                                 <div className="w-24 h-24 bg-[#F59E2D]/10 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -298,7 +291,6 @@ const ReviewsPage: FC = () => {
                             </div>
                         )}
 
-                        {/* Load More Button */}
                         {!lastPage && reviews.length > 0 && (
                             <div className="flex justify-center mt-12">
                                 <button

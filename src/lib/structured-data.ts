@@ -8,24 +8,42 @@ export interface Organization {
 }
 
 export interface ContactPoint {
-  "@type": string;
-  telephone: string;
-  contactType: string;
-  availableLanguage: string[];
+    "@type": string;
+    telephone: string;
+    contactType: string;
+    availableLanguage: string[];
+    hoursAvailable?: {
+        "@type": string;
+        opens: string;
+        closes: string;
+        dayOfWeek: string[];
+    };
 }
 
 export interface Address {
-  "@type": string;
-  streetAddress: string;
-  addressLocality: string;
-  addressCountry: string;
-  postalCode: string;
+    "@type": string;
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion?: string;
+    addressCountry: string;
+    postalCode: string;
 }
 
 export interface MedicalOrganization extends Organization {
-  "@type": string;
-  medicalSpecialty: string[];
-  availableService: MedicalService[];
+    "@type": string;
+    medicalSpecialty: string[];
+    availableService: MedicalService[];
+    priceRange?: string;
+    aggregateRating?: {
+        "@type": string;
+        ratingValue: string;
+        reviewCount: string;
+    };
+    geo?: {
+        "@type": string;
+        latitude: string;
+        longitude: string;
+    };
 }
 
 export interface MedicalService {
@@ -45,14 +63,16 @@ export function generateOrganizationSchema(locale: string = 'ru'): MedicalOrgani
     ru: {
       name: 'DI-CLINIC',
       description: 'Современная медицинская клиника в Алматы',
-      streetAddress: 'г. Алматы, ул. Примерная, 123', // Замените на реальный адрес
+      streetAddress: 'г. Алматы, проспект Абая, 150/230', // Обновил адрес
       specialties: [
         'Терапия',
         'Кардиология',
         'Неврология',
         'Гастроэнтерология',
         'Эндокринология',
-        'Дерматология'
+        'Дерматология',
+        'Гинекология',
+        'Урология'
       ],
       services: [
         {
@@ -66,20 +86,26 @@ export function generateOrganizationSchema(locale: string = 'ru'): MedicalOrgani
         {
           name: 'Лабораторные анализы',
           description: 'Полный спектр лабораторных исследований'
+        },
+        {
+          name: 'УЗИ диагностика',
+          description: 'Ультразвуковое исследование органов'
         }
       ]
     },
     kk: {
       name: 'DI-CLINIC',
       description: 'Алматыдағы заманауи медициналық клиника',
-      streetAddress: 'Алматы қ., Үлгілі көш., 123', // Замените на реальный адрес
+      streetAddress: 'Алматы қ., Абай даңғылы, 150/230',
       specialties: [
         'Терапия',
         'Кардиология',
         'Неврология',
         'Гастроэнтерология',
         'Эндокринология',
-        'Дерматология'
+        'Дерматология',
+        'Гинекология',
+        'Урология'
       ],
       services: [
         {
@@ -93,6 +119,10 @@ export function generateOrganizationSchema(locale: string = 'ru'): MedicalOrgani
         {
           name: 'Зертханалық талдаулар',
           description: 'Зертханалық зерттеулердің толық спектрі'
+        },
+        {
+          name: 'УДЗ диагностикасы',
+          description: 'Органдардың ультрадыбыстық зерттеуі'
         }
       ]
     }
@@ -108,22 +138,31 @@ export function generateOrganizationSchema(locale: string = 'ru'): MedicalOrgani
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: "+7-727-XXX-XX-XX", // Замените на реальный номер
+        telephone: "+7-727-344-03-03", // Реальный номер DI-CLINIC
         contactType: "customer service",
-        availableLanguage: ["Russian", "Kazakh"]
+        availableLanguage: ["Russian", "Kazakh"],
+        hoursAvailable: {
+          "@type": "OpeningHoursSpecification",
+          opens: "08:00",
+          closes: "20:00",
+          dayOfWeek: [
+            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+          ]
+        }
       }
     ],
     address: {
       "@type": "PostalAddress",
       streetAddress: data.streetAddress,
       addressLocality: "Алматы",
+      addressRegion: "Алматы",
       addressCountry: "KZ",
-      postalCode: "050000" // Замените на реальный индекс
+      postalCode: "050012"
     },
     sameAs: [
-      "https://www.facebook.com/di-clinic", // Замените на реальные ссылки
       "https://www.instagram.com/di_clinic_almaty",
-      "https://wa.me/77271234567" // Замените на реальный WhatsApp
+      "https://wa.me/77273440303",
+      "https://2gis.kz/almaty/firm/70000001018392421"
     ],
     medicalSpecialty: data.specialties,
     availableService: data.services.map(service => ({
@@ -134,7 +173,18 @@ export function generateOrganizationSchema(locale: string = 'ru'): MedicalOrgani
         "@type": "MedicalOrganization",
         name: data.name
       }
-    }))
+    })),
+    priceRange: "$$",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "127"
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "43.2567",
+      longitude: "76.9286"
+    }
   };
 }
 

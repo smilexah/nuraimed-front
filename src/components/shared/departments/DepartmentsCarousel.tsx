@@ -30,7 +30,6 @@ type Page<T> = {
 
 const normalizeLocale = (raw: string) => {
     const base = raw.split("-")[0].toLowerCase();
-    console.log(`normalizeLocale: ${raw} → ${base}`);
     return base === "kk" ? "kz" : base; // мэппинг BCP-47 → ваши коды
 };
 
@@ -129,7 +128,6 @@ export default function DepartmentsCarousel() {
             </h2>
 
             <div className="relative">
-                {/* стрелка влево */}
                 {canLeft && (
                     <button
                         aria-label="Назад"
@@ -140,7 +138,6 @@ export default function DepartmentsCarousel() {
                     </button>
                 )}
 
-                {/* стрелка вправо */}
                 {canRight && (
                     <button
                         aria-label="Вперёд"
@@ -151,13 +148,11 @@ export default function DepartmentsCarousel() {
                     </button>
                 )}
 
-                {/* градиенты по краям при наличии скролла */}
                 {canLeft && <div
                     className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-gray-50 to-transparent z-[5]"/>}
                 {canRight && <div
                     className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-gray-50 to-transparent z-[5]"/>}
 
-                {/* лента */}
                 <div
                     ref={scroller}
                     className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-pl-4 pr-4 pl-4 no-scrollbar"

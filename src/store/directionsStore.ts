@@ -36,14 +36,9 @@ export const useDirectionsStore = create<DirectionsState>((set, get) => ({
         set({ loading: true, error: null });
 
         try {
-            console.log(`Fetching directions for locale: ${locale}`);
-            console.log(`API URL: https://api.di-clinic.kz/api/directions/navbar?languageCode=${locale}`);
-
             const response = await axiosInstance.get<DirectionNamesResponse[]>(
                 `/directions/navbar?languageCode=${locale}`
             );
-
-            console.log('Directions loaded successfully:', response.data);
 
             set({
                 directions: response.data,

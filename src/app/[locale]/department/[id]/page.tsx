@@ -79,9 +79,7 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
             <div className="bg-gray-50 py-12 lg:py-16">
                 <div className="container mx-auto px-4">
                     <div className="max-w-7xl mx-auto">
-                        {/* Main Content */}
                         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-16">
-                            {/* Image Section */}
                             {department.directionImage && (
                                 <div className="relative">
                                     <div className="bg-white rounded-2xl p-4 shadow-lg">
@@ -93,15 +91,12 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
                                             className="w-full rounded-xl object-cover aspect-[4/3]"
                                         />
                                     </div>
-                                    {/* Decorative elements */}
                                     <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#F59E2D] rounded-full opacity-20"></div>
                                     <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-[#2A5963] rounded-full opacity-10"></div>
                                 </div>
                             )}
 
-                            {/* Content Section */}
                             <div className="space-y-6">
-                                {/* Description Card */}
                                 <div className="bg-white rounded-2xl shadow-lg p-6 lg:p-8 border border-gray-100">
                                     <div className="flex items-center mb-6">
                                         <div className="w-1 h-8 bg-[#F59E2D] rounded-full mr-4"></div>
@@ -114,7 +109,6 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
                                     </p>
                                 </div>
 
-                                {/* Offer Details Card */}
                                 {currentTranslation.offerDetails && (
                                     <div className="bg-gradient-to-br from-[#2A5963] to-[#1e4147] rounded-2xl shadow-lg p-6 lg:p-8 text-white">
                                         <div className="flex items-center mb-6">
@@ -133,7 +127,6 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
                             </div>
                         </div>
 
-                        {/* Services Section */}
                         <div className="grid md:grid-cols-3 gap-6 mb-16">
                             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 text-center">
                                 <div className="w-16 h-16 bg-[#F59E2D]/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -166,7 +159,6 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
                             </div>
                         </div>
 
-                        {/* Contact Section */}
                         <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-12 border border-gray-100">
                             <div className="text-center max-w-3xl mx-auto">
                                 <div className="w-20 h-20 bg-[#F59E2D]/10 rounded-full flex items-center justify-center mx-auto mb-6">
