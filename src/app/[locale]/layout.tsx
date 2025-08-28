@@ -4,6 +4,8 @@ import {getMessages} from "next-intl/server";
 import {notFound} from "next/navigation";
 import {Header} from "@/components/shared/header";
 import {Footer} from "@/components/shared/footer";
+import JsonLd from "@/components/JsonLd";
+import { generateOrganizationSchema } from "@/lib/structured-data";
 
 export default async function LocaleLayout({
                                                children,
@@ -19,12 +21,14 @@ export default async function LocaleLayout({
     }
 
     const messages = await getMessages();
+    const organizationSchema = generateOrganizationSchema(locale);
 
     return (
         <NextIntlClientProvider messages={messages}>
+            <JsonLd data={organizationSchema} />
             <div className="flex min-h-screen flex-col">
                 <Header/>
-                <div className="flex-grow">{children}</div>
+                <main className="flex-grow">{children}</main>
                 <Footer/>
             </div>
         </NextIntlClientProvider>
