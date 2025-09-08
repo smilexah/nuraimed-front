@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState, useEffect, useRef } from "react";
+import React, { FC, useState, useEffect, useRef } from "react";
 import { Banner } from "@/components/shared/banner/Banner";
 import axiosInstance from "@/api/axiosInstance";
 
@@ -27,6 +27,7 @@ const ReviewsPage: FC = () => {
     const [loadingMore, setLoadingMore] = useState(false);
     const [page, setPage] = useState(0);
     const [lastPage, setLastPage] = useState(false);
+    const [totalElements, setTotalElements] = useState(0);
     const [error, setError] = useState<string | null>(null);
     const initialLoadRef = useRef(false);
 
@@ -53,6 +54,7 @@ const ReviewsPage: FC = () => {
 
             setLastPage(res.data.last);
             setPage(pageNum);
+            setTotalElements(res.data.totalElements);
         } catch (err) {
             console.error("Ошибка загрузки отзывов", err);
         } finally {
@@ -232,48 +234,40 @@ const ReviewsPage: FC = () => {
                                 <div className="flex items-center mb-8">
                                     <div className="w-1 h-8 bg-[#F59E2D] rounded-full mr-4"></div>
                                     <h2 className="text-2xl font-bold text-[#2A5963]">
-                                        Отзывы пациентов ({reviews.length})
+                                        Отзывы пациентов
                                     </h2>
                                 </div>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                                     {reviews.map((review) => (
-                                        <div key={review.id} className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                                        <article
+                                            key={review.id}
+                                            className="bg-white rounded-2xl border border-gray-100 p-6 text-[#2A5963] shadow-lg hover:shadow-xl transition-all duration-300"
+                                        >
                                             <div className="flex items-center mb-4">
                                                 <div className="w-12 h-12 bg-[#F59E2D]/10 rounded-full flex items-center justify-center mr-3">
                                                     <svg className="w-6 h-6 text-[#F59E2D]" fill="currentColor" viewBox="0 0 20 20">
                                                         <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                                                     </svg>
                                                 </div>
-                                                <div>
+                                                <div className="flex flex-col justify-center">
                                                     <h3 className="font-bold text-[#2A5963] text-lg">{review.name}</h3>
-                                                    <p className="text-gray-500 text-sm">
-                                                        {review.phone || "Телефон не указан"}
-                                                    </p>
+                                                    <div className="flex items-center text-slate-400 text-sm">
+                                                        <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fillRule="evenodd"
+                                                                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                                  clipRule="evenodd"/>
+                                                        </svg>
+                                                        {new Date(review.createdAt).toLocaleDateString("ru-RU", {
+                                                            year: "numeric",
+                                                            month: "long",
+                                                            day: "numeric"
+                                                        })}
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <div className="flex mb-3">
-                                                {[...Array(5)].map((_, i) => (
-                                                    <svg key={i} className="w-4 h-4 text-[#F59E2D]" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                    </svg>
-                                                ))}
-                                            </div>
-
-                                            <p className="text-gray-700 leading-relaxed mb-4">{review.message}</p>
-
-                                            <div className="flex items-center text-xs text-gray-400">
-                                                <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                                                </svg>
-                                                {new Date(review.createdAt).toLocaleDateString("ru-RU", {
-                                                    year: 'numeric',
-                                                    month: 'long',
-                                                    day: 'numeric'
-                                                })}
-                                            </div>
-                                        </div>
+                                            <p className="leading-7">{review.message}</p>
+                                        </article>
                                     ))}
                                 </div>
                             </div>
@@ -281,7 +275,8 @@ const ReviewsPage: FC = () => {
 
                         {!loading && reviews.length === 0 && (
                             <div className="text-center py-16">
-                                <div className="w-24 h-24 bg-[#F59E2D]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <div
+                                    className="w-24 h-24 bg-[#F59E2D]/10 rounded-full flex items-center justify-center mx-auto mb-6">
                                     <svg className="w-12 h-12 text-[#F59E2D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10m0 0V6a2 2 0 00-2-2H9a2 2 0 00-2 2v2m10 0v10a2 2 0 01-2 2H9a2 2 0 01-2-2V8m10 0H7m3 4h4" />
                                     </svg>
@@ -291,8 +286,8 @@ const ReviewsPage: FC = () => {
                             </div>
                         )}
 
-                        {!lastPage && reviews.length > 0 && (
-                            <div className="flex justify-center mt-12">
+                        {totalElements > 8 && !lastPage && reviews.length > 0 && !loading && (
+                            <div className="mt-8 text-center">
                                 <button
                                     onClick={handleLoadMore}
                                     disabled={loadingMore}

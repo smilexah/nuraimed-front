@@ -52,8 +52,8 @@ const AboutUsClient: FC = () => {
                                     </div>
                                     <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
                                         <Image
-                                            src="/nuraimed.jpg"
-                                            alt="DI-CLINIC клиника"
+                                            src="/no-photo.svg"
+                                            alt="DI-CLINIC клиника - временное изображение"
                                             fill
                                             className="object-cover"
                                         />
