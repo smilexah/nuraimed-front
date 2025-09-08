@@ -154,8 +154,8 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </div>
-                                <h3 className="text-lg font-semibold text-[#2A5963] mb-2">Работаем 24/7</h3>
-                                <p className="text-gray-600 text-sm">Круглосуточная медицинская помощь</p>
+                                <h3 className="text-lg font-semibold text-[#2A5963] mb-2">Работаем ежедневно</h3>
+                                <p className="text-gray-600 text-sm">с 08:00 до 18:00</p>
                             </div>
                         </div>
 
@@ -182,7 +182,7 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
                                         Записаться на прием
                                     </Link>
                                     <a
-                                        href="tel:+77089113790"
+                                        href="tel:+77086073074"
                                         className="border-2 border-[#2A5963] text-[#2A5963] hover:bg-[#2A5963] hover:text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 text-center"
                                     >
                                         Позвонить сейчас
@@ -194,7 +194,7 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
                                         <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                                         </svg>
-                                        Работаем 24/7
+                                        Ежедневно с 08:00 до 18:00
                                     </div>
                                     <div className="flex items-center">
                                         <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">

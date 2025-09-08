@@ -40,8 +40,7 @@ export const Footer: FC = () => {
                                 className="mt-1 flex-shrink-0"
                             />
                             <p className="text-sm text-gray-700 leading-relaxed">
-                                г. Алматы, ул. Абая, 123<br />
-                                БЦ &quot;Медицинский&quot;, 2 этаж
+                                г. Алматы, ул. Жунисова, 4а
                             </p>
                         </div>
                     </div>
@@ -119,12 +118,12 @@ export const Footer: FC = () => {
                                 className="mt-1 flex-shrink-0"
                             />
                             <div className="flex flex-col">
-                                <p className="text-xs text-gray-600 mb-1">Круглосуточно</p>
+                                <p className="text-xs text-gray-600 mb-1">Ежедневно с 08:00 до 18:00</p>
                                 <a
-                                    href="tel:+77472068196"
+                                    href="tel:+77086073074"
                                     className="text-sm font-semibold text-[#2A5963] hover:text-[#F59E2D] transition-colors duration-200"
                                 >
-                                    +7 (747) 206-81-96
+                                    +7 (708) 607 30-74
                                 </a>
                             </div>
                         </div>
@@ -140,10 +139,10 @@ export const Footer: FC = () => {
                             <div className="flex flex-col">
                                 <p className="text-xs text-gray-600 mb-1">Жалобы и предложения</p>
                                 <a
-                                    href="tel:+77472068196"
+                                    href="tel:+77086073075"
                                     className="text-sm font-semibold text-[#2A5963] hover:text-[#F59E2D] transition-colors duration-200"
                                 >
-                                    +7 (747) 206-81-96
+                                    +7 (708) 607 30-75
                                 </a>
                             </div>
                         </div>
@@ -152,7 +151,7 @@ export const Footer: FC = () => {
                             <p className="text-sm text-gray-600 mb-3">Мы в социальных сетях:</p>
                             <div className="flex gap-3">
                                 <a
-                                    href="https://wa.me/77086073075?text=Здравствуйте!%20Пишу%20Вам%20с%20сайта.%20Хочу%20записаться%20на%20консультацию."
+                                    href="https://wa.me/77086073074?text=Здравствуйте!%20Пишу%20Вам%20с%20сайта.%20Хочу%20записаться%20на%20консультацию."
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:scale-110 transition-transform duration-200"

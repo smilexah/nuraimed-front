@@ -193,8 +193,8 @@ const AboutUsClient: FC = () => {
                                         <div className="text-white/80">Лет опыта</div>
                                     </div>
                                     <div className="group">
-                                        <div className="text-3xl lg:text-4xl font-bold text-[#F59E2D] mb-2 group-hover:scale-110 transition-transform duration-300">24/7</div>
-                                        <div className="text-white/80">Поддержка</div>
+                                        <div className="text-3xl lg:text-4xl font-bold text-[#F59E2D] mb-2 group-hover:scale-110 transition-transform duration-300">08:00-18:00</div>
+                                        <div className="text-white/80">Ежедневно</div>
                                     </div>
                                 </div>
                             </div>

@@ -92,7 +92,7 @@ export const SpecialistView: FC<{ specialist: Specialist }> = ({specialist}) => 
                             onClick={() => {
                                 const message = `Здравствуйте! Мне нужна консультация врача ${fullName}. Можете помочь записаться на приём?`;
                                 window.open(
-                                    `https://wa.me/77472068196?text=${encodeURIComponent(message)}`,
+                                    `https://wa.me/77086073074?text=${encodeURIComponent(message)}`,
                                     "_blank"
                                 );
                             }}

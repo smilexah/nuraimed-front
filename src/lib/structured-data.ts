@@ -63,7 +63,7 @@ export function generateOrganizationSchema(locale: string = 'ru'): MedicalOrgani
     ru: {
       name: 'DI-CLINIC',
       description: 'Современная медицинская клиника в Алматы',
-      streetAddress: 'г. Алматы, проспект Абая, 150/230', // Обновил адрес
+      streetAddress: 'г. Алматы, ул. Жунисова, 4а', // Обновил адрес
       specialties: [
         'Терапия',
         'Кардиология',
@@ -96,7 +96,7 @@ export function generateOrganizationSchema(locale: string = 'ru'): MedicalOrgani
     kk: {
       name: 'DI-CLINIC',
       description: 'Алматыдағы заманауи медициналық клиника',
-      streetAddress: 'Алматы қ., Абай даңғылы, 150/230',
+      streetAddress: 'Алматы қ., Жүнісов даңғылы, 4а',
       specialties: [
         'Терапия',
         'Кардиология',
@@ -206,16 +206,59 @@ export function generatePersonSchema(doctor: {
   description: string;
   image?: string;
   worksFor: string;
+  education?: string;
+  experience?: string;
+  specialization?: string;
 }): object {
+  const baseUrl = 'https://di-clinic.kz';
+
   return {
     "@type": "Person",
     name: doctor.name,
     jobTitle: doctor.jobTitle,
     description: doctor.description,
-    image: doctor.image,
+    image: doctor.image ? `${baseUrl}${doctor.image}` : undefined,
     worksFor: {
       "@type": "MedicalOrganization",
-      name: doctor.worksFor
+      name: doctor.worksFor,
+      url: baseUrl
+    },
+    // Дополнительные поля для медицинского профиля
+    knowsAbout: doctor.specialization ? [doctor.specialization] : undefined,
+    hasOccupation: {
+      "@type": "Occupation",
+      name: doctor.jobTitle,
+      occupationLocation: {
+        "@type": "City",
+        name: "Алматы"
+      }
+    },
+    // Образование (если передано)
+    ...(doctor.education && {
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "degree",
+        educationalLevel: doctor.education
+      }
+    }),
+    // Опыт работы (если передан)
+    ...(doctor.experience && {
+      hasOccupation: {
+        "@type": "Occupation",
+        name: doctor.jobTitle,
+        experienceRequirements: doctor.experience,
+        occupationLocation: {
+          "@type": "City",
+          name: "Алматы"
+        }
+      }
+    }),
+    // Контактная информация через организацию
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+7-727-344-03-03",
+      contactType: "appointment booking",
+      availableLanguage: ["Russian", "Kazakh"]
     }
   };
 }

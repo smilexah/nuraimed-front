@@ -175,12 +175,12 @@ export const Header: FC = () => {
                             <Image src="/header-phone.svg" alt="Phone" width={24} height={24} />
                             <div className="flex flex-col">
                                 <a
-                                    href="tel:+77089113790"
+                                    href="tel:+77086073074"
                                     className="text-[#2A5963] font-semibold hover:text-[#F59E2D] transition-colors duration-200"
                                 >
-                                    +7 (708) 911-37-90
+                                    +7 (708) 607 30-74
                                 </a>
-                                <p className="text-xs text-gray-600">Отвечаем 24/7</p>
+                                <p className="text-xs text-gray-600">Ежедневно с 08:00 до 18:00</p>
                             </div>
                         </div>
 
@@ -342,13 +342,13 @@ export const Header: FC = () => {
                                 <Image src="/header-phone.svg" alt="Phone" width={20} height={20} />
                                 <div>
                                     <a
-                                        href="tel:+77089113790"
+                                        href="tel:+77086073074"
                                         className="text-[#2A5963] font-semibold text-base lg:text-lg hover:text-[#F59E2D] transition-colors duration-200"
                                     >
-                                        +7 (708) 911-37-90
+                                        +7 (708) 607 30-74
                                     </a>
                                     <p className="text-xs lg:text-sm text-gray-600">
-                                        Отвечаем 24/7 без выходных
+                                        Ежедневно с 08:00 до 18:00
                                     </p>
                                 </div>
                             </div>
