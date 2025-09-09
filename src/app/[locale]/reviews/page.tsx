@@ -205,7 +205,7 @@ const ReviewsPage: FC = () => {
                                     <button
                                         type="submit"
                                         disabled={loading}
-                                        className="w-full bg-[#2A5963] hover:bg-[#1e4147] text-[#F59E2D] font-semibold py-4 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                                        className="w-full bg-[#2A5963] hover:bg-[#1e4147] text-[#F59E2D] font-semibold py-4 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         {loading ? (
                                             <div className="flex items-center justify-center">

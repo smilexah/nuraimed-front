@@ -177,7 +177,7 @@ const UniqueDepartmentPage: FC<DepartmentPageProps> = ({ params }) => {
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                                     <Link
                                         href="/contact"
-                                        className="bg-[#2A5963] hover:bg-[#1e4147] text-[#F59E2D] px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center"
+                                        className="bg-[#2A5963] hover:bg-[#1e4147] text-[#F59E2D] px-8 py-4 rounded-2xl font-semibold transition-all duration-300 text-center"
                                     >
                                         Записаться на прием
                                     </Link>

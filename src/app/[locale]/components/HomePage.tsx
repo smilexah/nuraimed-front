@@ -20,7 +20,7 @@ const HomePage = () => {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link
                             href="/contact"
-                            className="bg-[#F59E2D] hover:bg-[#F59E2D]/90 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all transform hover:scale-105 hover:shadow-lg"
+                            className="bg-[#F59E2D] hover:bg-[#F59E2D]/80 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all"
                         >
                             Записаться на прием
                         </Link>
@@ -135,7 +135,7 @@ const HomePage = () => {
                                     </p>
                                     <Link
                                         href="/about-us"
-                                        className="bg-[#2A5963] hover:bg-[#2A5963]/90 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg inline-block"
+                                        className="bg-[#2A5963] hover:bg-[#2A5963]/90 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 inline-block"
                                     >
                                         Подробнее о клинике
                                     </Link>
@@ -243,7 +243,7 @@ const HomePage = () => {
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Link
                                     href="/contact"
-                                    className="bg-white text-[#F59E2D] hover:bg-gray-100 px-10 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 hover:shadow-lg"
+                                    className="bg-white text-[#F59E2D] hover:bg-gray-200 px-10 py-4 rounded-xl font-bold text-lg transition-all"
                                 >
                                     Записаться на прием
                                 </Link>

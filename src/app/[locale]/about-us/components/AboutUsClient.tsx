@@ -212,7 +212,7 @@ const AboutUsClient: FC = () => {
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                     <Link
                                         href="/contact"
-                                        className="bg-[#2A5963] hover:bg-[#2A5963]/90 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:shadow-lg"
+                                        className="bg-[#2A5963] hover:bg-[#2A5963]/90 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300"
                                     >
                                         Связаться с нами
                                     </Link>
