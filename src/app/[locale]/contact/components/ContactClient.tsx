@@ -144,7 +144,7 @@ const ContactClient: FC = () => {
                                             </div>
                                             <div>
                                                 <h4 className="font-semibold text-[#2A5963] mb-1">Email</h4>
-                                                <a href="mailto:info@nuraimed.kz" className="text-gray-600 hover:text-[#F59E2D] transition-colors">
+                                                <a href="mailto:info@di-clinic.kz" className="text-gray-600 hover:text-[#F59E2D] transition-colors">
                                                     info@di-clinic.kz
                                                 </a>
                                                 <p className="text-sm text-gray-500 mt-1">Ответим в течение часа</p>
