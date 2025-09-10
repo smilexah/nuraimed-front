@@ -242,18 +242,18 @@ const ReviewsPage: FC = () => {
                                     {reviews.map((review) => (
                                         <article
                                             key={review.id}
-                                            className="bg-white rounded-2xl border border-gray-100 p-6 text-[#2A5963] shadow-lg hover:shadow-xl transition-all duration-300"
+                                            className="flex flex-col gap-3  bg-white rounded-2xl border border-gray-100 p-6 text-[#2A5963] shadow-lg hover:shadow-xl transition-all duration-300"
                                         >
-                                            <div className="flex items-center mb-4">
-                                                <div className="w-12 h-12 bg-[#F59E2D]/10 rounded-full flex items-center justify-center mr-3">
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-12 h-12 bg-[#F59E2D]/10 rounded-full flex items-center justify-center">
                                                     <svg className="w-6 h-6 text-[#F59E2D]" fill="currentColor" viewBox="0 0 20 20">
                                                         <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                                                     </svg>
                                                 </div>
-                                                <div className="flex flex-col justify-center">
+                                                <div className="flex flex-col">
                                                     <h3 className="font-bold text-[#2A5963] text-lg">{review.name}</h3>
-                                                    <div className="flex items-center text-slate-400 text-sm">
-                                                        <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                    <div className="flex gap-2 items-center text-slate-400 text-sm">
+                                                        <svg className="w-4 h-4 " fill="currentColor" viewBox="0 0 20 20">
                                                             <path fillRule="evenodd"
                                                                   d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                                                   clipRule="evenodd"/>
