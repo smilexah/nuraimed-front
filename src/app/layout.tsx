@@ -66,9 +66,13 @@ export const metadata: Metadata = {
         },
     },
     icons: {
-        icon: "/favicon.ico",
-        shortcut: "/favicon-16x16.png",
-        apple: "/apple-touch-icon.png",
+        icon: [
+            { url: "/icon.svg", sizes: "1280x1280", type: "image/svg+xml" },
+            { url: "/icon.png", sizes: "96x96", type: "image/png" },
+        ],
+        apple: [
+            { url: "/apple-icon.png", sizes: "180x180", type: "image/png" }
+        ],
     },
     manifest: "/site.webmanifest",
 };
@@ -87,10 +91,10 @@ export default function RootLayout({
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
             <meta name="theme-color" content="#2A5963" />
             <meta name="mobile-web-app-capable" content="yes" />
+            <meta name="apple-mobile-web-app-title" content="Di-Clinic" />
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-status-bar-style" content="default" />
             <meta name="format-detection" content="telephone=yes" />
-            <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         </head>
         <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
