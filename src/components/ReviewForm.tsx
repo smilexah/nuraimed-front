@@ -79,6 +79,9 @@ export default function ReviewForm() {
                             />
                         )}
                     />
+                    {errors.phone && (
+                        <p className="text-red-500 text-xs sm:text-sm">{errors.phone.message}</p>
+                    )}
                 </div>
             </div>
 
