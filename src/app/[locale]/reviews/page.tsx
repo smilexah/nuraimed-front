@@ -3,8 +3,9 @@
 import React, { FC, useState, useEffect, useRef } from "react";
 import { Banner } from "@/components/shared/banner/Banner";
 import axiosInstance from "@/api/axiosInstance";
+import ReviewForm from "@/components/ReviewForm";
 
-type Review = {
+export type Review = {
     id: number;
     name: string;
     phone: string;
@@ -12,7 +13,7 @@ type Review = {
     createdAt: string;
 };
 
-type PaginatedResponse = {
+export type PaginatedResponse = {
     content: Review[];
     last: boolean;
     totalElements: number;
@@ -22,7 +23,6 @@ type PaginatedResponse = {
 
 const ReviewsPage: FC = () => {
     const [reviews, setReviews] = useState<Review[]>([]);
-    const [form, setForm] = useState({ name: "", phone: "", message: "" });
     const [loading, setLoading] = useState(false);
     const [loadingMore, setLoadingMore] = useState(false);
     const [page, setPage] = useState(0);
@@ -70,39 +70,39 @@ const ReviewsPage: FC = () => {
         }
     }, []);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        if (!form.name.trim()) {
-            setError("Пожалуйста, введите ваше имя");
-            return;
-        }
-
-        if (!form.message.trim()) {
-            setError("Пожалуйста, напишите отзыв");
-            return;
-        }
-
-        try {
-            setLoading(true);
-            setError(null);
-
-            await axiosInstance.post<Review>("/reviews", {
-                name: form.name.trim(),
-                phone: form.phone.trim(),
-                message: form.message.trim()
-            });
-
-            setForm({ name: "", phone: "", message: "" });
-            await fetchReviews(0, true);
-
-        } catch (err) {
-            console.error("Ошибка отправки отзыва", err);
-            setError("Ошибка при отправке отзыва. Попробуйте еще раз.");
-        } finally {
-            setLoading(false);
-        }
-    };
+    // const handleSubmit = async (e: React.FormEvent) => {
+    //     e.preventDefault();
+    //
+    //     if (!form.name.trim()) {
+    //         setError("Пожалуйста, введите ваше имя");
+    //         return;
+    //     }
+    //
+    //     if (!form.message.trim()) {
+    //         setError("Пожалуйста, напишите отзыв");
+    //         return;
+    //     }
+    //
+    //     try {
+    //         setLoading(true);
+    //         setError(null);
+    //
+    //         await axiosInstance.post<Review>("/reviews", {
+    //             name: form.name.trim(),
+    //             phone: form.phone.trim(),
+    //             message: form.message.trim()
+    //         });
+    //
+    //         setForm({ name: "", phone: "", message: "" });
+    //         await fetchReviews(0, true);
+    //
+    //     } catch (err) {
+    //         console.error("Ошибка отправки отзыва", err);
+    //         setError("Ошибка при отправке отзыва. Попробуйте еще раз.");
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
 
     const handleLoadMore = async () => {
         if (!lastPage && !loadingMore) {
@@ -156,67 +156,68 @@ const ReviewsPage: FC = () => {
                                     </h2>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                Ваше имя *
-                                            </label>
-                                            <input
-                                                type="text"
-                                                placeholder="Введите ваше имя"
-                                                className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#F59E2D] focus:border-transparent transition-all"
-                                                value={form.name}
-                                                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                                disabled={loading}
-                                                required
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                Ваш телефон
-                                            </label>
-                                            <input
-                                                type="tel"
-                                                placeholder="+7 (___) ___-__-__"
-                                                className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#F59E2D] focus:border-transparent transition-all"
-                                                value={form.phone}
-                                                onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                                                disabled={loading}
-                                            />
-                                        </div>
-                                    </div>
+                                <ReviewForm />
+                                {/*<form onSubmit={handleSubmit} className="space-y-6">*/}
+                                {/*    <div className="grid md:grid-cols-2 gap-6">*/}
+                                {/*        <div>*/}
+                                {/*            <label className="block text-sm font-medium text-gray-700 mb-2">*/}
+                                {/*                Ваше имя **/}
+                                {/*            </label>*/}
+                                {/*            <input*/}
+                                {/*                type="text"*/}
+                                {/*                placeholder="Введите ваше имя"*/}
+                                {/*                className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#F59E2D] focus:border-transparent transition-all"*/}
+                                {/*                value={form.name}*/}
+                                {/*                onChange={(e) => setForm({ ...form, name: e.target.value })}*/}
+                                {/*                disabled={loading}*/}
+                                {/*                required*/}
+                                {/*            />*/}
+                                {/*        </div>*/}
+                                {/*        <div>*/}
+                                {/*            <label className="block text-sm font-medium text-gray-700 mb-2">*/}
+                                {/*                Ваш телефон*/}
+                                {/*            </label>*/}
+                                {/*            <input*/}
+                                {/*                type="tel"*/}
+                                {/*                placeholder="+7 (___) ___-__-__"*/}
+                                {/*                className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#F59E2D] focus:border-transparent transition-all"*/}
+                                {/*                value={form.phone}*/}
+                                {/*                onChange={(e) => setForm({ ...form, phone: e.target.value })}*/}
+                                {/*                disabled={loading}*/}
+                                {/*            />*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            Ваш отзыв *
-                                        </label>
-                                        <textarea
-                                            placeholder="Расскажите о своем опыте лечения в нашей клинике..."
-                                            rows={5}
-                                            className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#F59E2D] focus:border-transparent transition-all resize-none"
-                                            value={form.message}
-                                            onChange={(e) => setForm({ ...form, message: e.target.value })}
-                                            disabled={loading}
-                                            required
-                                        />
-                                    </div>
+                                {/*    <div>*/}
+                                {/*        <label className="block text-sm font-medium text-gray-700 mb-2">*/}
+                                {/*            Ваш отзыв **/}
+                                {/*        </label>*/}
+                                {/*        <textarea*/}
+                                {/*            placeholder="Расскажите о своем опыте лечения в нашей клинике..."*/}
+                                {/*            rows={5}*/}
+                                {/*            className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#F59E2D] focus:border-transparent transition-all resize-none"*/}
+                                {/*            value={form.message}*/}
+                                {/*            onChange={(e) => setForm({ ...form, message: e.target.value })}*/}
+                                {/*            disabled={loading}*/}
+                                {/*            required*/}
+                                {/*        />*/}
+                                {/*    </div>*/}
 
-                                    <button
-                                        type="submit"
-                                        disabled={loading}
-                                        className="w-full bg-[#2A5963] hover:bg-[#1e4147] text-[#F59E2D] font-semibold py-4 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                                    >
-                                        {loading ? (
-                                            <div className="flex items-center justify-center">
-                                                <div className="animate-spin rounded-full h-5 w-5 border-2 border-[#F59E2D] border-t-transparent mr-2"></div>
-                                                Отправка...
-                                            </div>
-                                        ) : (
-                                            "Отправить отзыв"
-                                        )}
-                                    </button>
-                                </form>
+                                {/*    <button*/}
+                                {/*        type="submit"*/}
+                                {/*        disabled={loading}*/}
+                                {/*        className="w-full bg-[#2A5963] hover:bg-[#1e4147] text-[#F59E2D] font-semibold py-4 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"*/}
+                                {/*    >*/}
+                                {/*        {loading ? (*/}
+                                {/*            <div className="flex items-center justify-center">*/}
+                                {/*                <div className="animate-spin rounded-full h-5 w-5 border-2 border-[#F59E2D] border-t-transparent mr-2"></div>*/}
+                                {/*                Отправка...*/}
+                                {/*            </div>*/}
+                                {/*        ) : (*/}
+                                {/*            "Отправить отзыв"*/}
+                                {/*        )}*/}
+                                {/*    </button>*/}
+                                {/*</form>*/}
                             </div>
                         </div>
 
