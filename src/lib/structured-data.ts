@@ -63,7 +63,7 @@ export function generateOrganizationSchema(locale: string = 'ru'): MedicalOrgani
     ru: {
       name: 'DI-CLINIC',
       description: 'Современная медицинская клиника в Алматы',
-      streetAddress: 'г. Алматы, ул. Жунисова, 4а', // Обновил адрес
+      streetAddress: 'г. Алматы, ул. Жунисова, 4а',
       specialties: [
         'Терапия',
         'Кардиология',

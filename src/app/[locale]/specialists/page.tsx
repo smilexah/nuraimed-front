@@ -88,7 +88,7 @@ const SpecialistsPage: FC = () => {
         <>
             <Banner
                 title="СПЕЦИАЛИСТЫ"
-                backgroundImage="/specialists-banner.jpg"
+                backgroundImage="/banners/specialists-banner.jpg"
                 breadcrumbItems={["Специалисты"]}
             />
 

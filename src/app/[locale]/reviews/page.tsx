@@ -114,7 +114,7 @@ const ReviewsPage: FC = () => {
         <>
             <Banner
                 title="ОТЗЫВЫ"
-                backgroundImage="/reviews-banner.jpg"
+                backgroundImage="/banners/reviews-banner.jpg"
                 breadcrumbItems={["Отзывы"]}
             />
 

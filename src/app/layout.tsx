@@ -84,8 +84,9 @@ export default function RootLayout({
 }>) {
 
     return (
-        <html lang="ru">
+        <html lang="ru" >
         <head>
+            <title>DI-CLINIC - Медицинская клиника в Алматы | Качественная медицина</title>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />

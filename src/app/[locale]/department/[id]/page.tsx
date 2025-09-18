@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         openGraph: {
             title: data.title,
             description: data.description,
-            image: department.directionImage ? `data:image/jpeg;base64,${department.directionImage}` : '/department-banner.jpg',
+            image: department.directionImage ? `data:image/jpeg;base64,${department.directionImage}` : '/banners/department-banner.jpg',
             type: 'website',
         },
     }, locale);

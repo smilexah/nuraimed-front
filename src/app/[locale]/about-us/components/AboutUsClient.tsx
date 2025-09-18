@@ -10,7 +10,7 @@ const AboutUsClient: FC = () => {
         <>
             <Banner
                 title="О КЛИНИКЕ"
-                backgroundImage="/specialists-banner.jpg"
+                backgroundImage="/banners/specialists-banner.jpg"
                 breadcrumbItems={["О клинике"]}
             />
 
@@ -52,7 +52,7 @@ const AboutUsClient: FC = () => {
                                     </div>
                                     <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
                                         <Image
-                                            src="/no-photo.svg"
+                                            src="/icons/no-photo-icon.svg"
                                             alt="DI-CLINIC клиника - временное изображение"
                                             fill
                                             className="object-cover"

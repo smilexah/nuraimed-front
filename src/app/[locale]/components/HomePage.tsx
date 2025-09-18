@@ -108,7 +108,7 @@ const HomePage = () => {
                             <div className="grid lg:grid-cols-2 gap-12 items-center">
                                 <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
                                     <Image
-                                        src="/no-photo.svg"
+                                        src="/icons/no-photo-icon.svg"
                                         alt="DI-CLINIC медицинский центр - временное изображение"
                                         fill
                                         className="object-cover"

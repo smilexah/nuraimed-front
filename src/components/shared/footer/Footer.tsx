@@ -33,7 +33,7 @@ export const Footer: FC = () => {
                         </Link>
                         <div className="flex gap-3 items-start">
                             <Image
-                                src="/footer-location-point.svg"
+                                src="/icons/footer-location-point-icon.svg"
                                 alt="Location"
                                 width={16}
                                 height={16}
@@ -111,7 +111,7 @@ export const Footer: FC = () => {
 
                         <div className="flex gap-3 items-start">
                             <Image
-                                src="/footer-phone.svg"
+                                src="/icons/footer-phone-icon.svg"
                                 alt="Phone"
                                 width={20}
                                 height={20}
@@ -130,7 +130,7 @@ export const Footer: FC = () => {
 
                         <div className="flex gap-3 items-start">
                             <Image
-                                src="/footer-phone.svg"
+                                src="/icons/footer-phone-icon.svg"
                                 alt="Phone"
                                 width={20}
                                 height={20}
@@ -157,7 +157,7 @@ export const Footer: FC = () => {
                                     className="hover:scale-110 transition-transform duration-200"
                                 >
                                     <Image
-                                        src="/whatsapp-icon.svg"
+                                        src="/icons/whatsapp-icon.svg"
                                         alt="WhatsApp"
                                         width={32}
                                         height={32}
@@ -170,7 +170,7 @@ export const Footer: FC = () => {
                                     className="hover:scale-110 transition-transform duration-200"
                                 >
                                     <Image
-                                        src="/instagram-icon.svg"
+                                        src="/icons/instagram-icon.svg"
                                         alt="Instagram"
                                         width={32}
                                         height={32}
@@ -183,7 +183,7 @@ export const Footer: FC = () => {
                                     className="hover:scale-110 transition-transform duration-200"
                                 >
                                     <Image
-                                        src="/facebook-icon.svg"
+                                        src="/icons/facebook-icon.svg"
                                         alt="Facebook"
                                         width={32}
                                         height={32}

@@ -58,7 +58,7 @@ const ContactClient: FC = () => {
 
                                 <div className="hidden lg:block lg:w-1/3 lg:h-auto relative">
                                     <Image
-                                        src="/specialists-banner.jpg"
+                                        src="/banners/specialists-banner.jpg"
                                         alt="Медицинская консультация"
                                         className="w-full h-full object-cover"
                                         width={500}

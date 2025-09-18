@@ -43,7 +43,7 @@ export const SpecialistView: FC<{ specialist: Specialist }> = ({specialist}) => 
         <>
             <Banner
                 title={fullName}
-                backgroundImage="/specialists-banner.jpg"
+                backgroundImage="/banners/specialists-banner.jpg"
                 breadcrumbItems={["Специалисты", fullName]}
             />
 

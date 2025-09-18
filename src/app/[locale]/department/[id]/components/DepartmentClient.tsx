@@ -69,7 +69,7 @@ const DepartmentClient: FC<DepartmentClientProps> = ({ id, locale }) => {
         <>
             <Banner
                 title={currentTranslation.title}
-                backgroundImage={department.directionImage ? `data:image/jpeg;base64,${department.directionImage}` : "/department-banner.jpg"}
+                backgroundImage={department.directionImage ? `data:image/jpeg;base64,${department.directionImage}` : "/banners/department-banner.jpg"}
                 breadcrumbItems={["Отделения", currentTranslation.title]}
             />
 

@@ -69,7 +69,7 @@ export const Header: FC = () => {
                         </Link>
                     </div>
 
-                    <nav className="hidden lg:block">
+                    <nav className="hidden xl:block">
                         <ul className="flex space-x-6 text-[#F59E2D] font-medium">
                             <li>
                                 <Link
@@ -172,7 +172,7 @@ export const Header: FC = () => {
 
                     <div className="hidden xl:flex gap-3 items-center">
                         <div className="hidden xl:flex gap-2 items-center">
-                            <Image src="/header-phone.svg" alt="Phone" width={24} height={24} />
+                            <Image src="/icons/header-phone-icon.svg" alt="Phone" width={24} height={24} />
                             <div className="flex flex-col">
                                 <a
                                     href="tel:+77086073074"
@@ -339,7 +339,7 @@ export const Header: FC = () => {
 
                         <div className="border-t border-gray-200 pt-4">
                             <div className="flex items-center gap-3 mb-4">
-                                <Image src="/header-phone.svg" alt="Phone" width={20} height={20} />
+                                <Image src="/icons/header-phone-icon.svg" alt="Phone" width={20} height={20} />
                                 <div>
                                     <a
                                         href="tel:+77086073074"

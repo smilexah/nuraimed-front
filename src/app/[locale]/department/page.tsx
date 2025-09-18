@@ -10,7 +10,7 @@ const DepartmentPage: FC = () => {
         <>
             <Banner
                 title="ОТДЕЛЕНИЯ"
-                backgroundImage="/department-banner.jpg"
+                backgroundImage="/banners/department-banner.jpg"
                 breadcrumbItems={["Отделения"]}
             />
 
